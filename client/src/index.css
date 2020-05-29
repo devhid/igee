@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+        "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+    padding: 0.3rem;
+    margin: 0.5em 0;
+    overflow: auto;
+    color: #dc4753;
+    border-radius: 3px;
+    font-size: smaller;
+}
+
+code:before {
+    color: #acb3c2;
+    content: attr(data-lang);
+    font-size: smaller;
+    position: absolute;
+    right: 1rem;
+    top: 0.7rem;
+}
+
+.MuiCard-root {
+    background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75));
+    background-color: unset !important;
+}
+
+.MuiTypography-body1 {
+    font-size: 1.1rem !important;
+}
+
+.MuiCardContent-root:last-child {
+    padding-bottom: 16px !important;
+}
