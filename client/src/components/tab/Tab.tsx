@@ -9,7 +9,6 @@ import {
     Button,
     Grid,
     CircularProgress,
-    LinearProgress,
 } from "@material-ui/core";
 import "./Tab.css";
 import { Information } from "./Information";
@@ -17,6 +16,7 @@ import { Results } from "./Results";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import axios, { AxiosResponse } from "axios";
 import { UploadResult } from "../../models/response";
+import { Element } from "react-scroll";
 
 interface UploadFileStateProps {
     result: UploadResult | null;
@@ -61,17 +61,19 @@ export class Tab extends React.Component<{}, UploadFileStateProps> {
 
     render() {
         return (
-            <React.Fragment>
+            <Element name="instagram-tab">
                 <Box px={12} pt={8} pb={1} className="instagram-tab">
                     <Container maxWidth="md">
-                        <Typography variant="h4">Instagram</Typography>
+                        <Typography className="text-center" variant="h4">
+                            Get Started
+                        </Typography>
                         <Divider></Divider>
 
                         <Information />
 
                         <Box my={4}>
                             <Box my={2}>
-                                <Typography variant="h5">Get Started</Typography>
+                                <Typography variant="h5">How do I start?</Typography>
                             </Box>
 
                             <Box>
@@ -148,22 +150,13 @@ export class Tab extends React.Component<{}, UploadFileStateProps> {
                 ) : (
                     <Box pb={4} className="text-center">
                         <Typography variant="h3">
-                            {this.state.uploaded ? "Loading..." : "Upload your file to see results here."}
+                            {this.state.uploaded
+                                ? "Loading..."
+                                : "Upload your file to see results here."}
                         </Typography>
-                        {/* <Box my={2}>
-                            <Container maxWidth="sm">
-                                <Divider></Divider>
-                            </Container>
-                        </Box>
-
-                        <Box my={4}>
-                            <Typography variant="body1">
-                                Upload your file to see the results below.
-                            </Typography>
-                        </Box> */}
                     </Box>
                 )}
-            </React.Fragment>
+            </Element>
         );
     }
 }
