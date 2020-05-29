@@ -32,7 +32,7 @@ export class Results extends Component<ResultsProps> {
                 <Container className="instagram-results">
                     <Box>
                         <Box className="text-center">
-                            <Typography variant="h4">Results</Typography>
+                            <Typography variant="h3">Results</Typography>
                             <Container maxWidth="sm">
                                 <Box py={2}>
                                     <Divider></Divider>

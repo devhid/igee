@@ -8,6 +8,8 @@ import {
     CardContent,
     Button,
     Grid,
+    CircularProgress,
+    LinearProgress,
 } from "@material-ui/core";
 import "./Tab.css";
 import { Information } from "./Information";
@@ -18,13 +20,15 @@ import { UploadResult } from "../../models/response";
 
 interface UploadFileStateProps {
     result: UploadResult | null;
+    uploaded: boolean;
 }
 
 export class Tab extends React.Component<{}, UploadFileStateProps> {
     constructor(props: {}) {
         super(props);
         this.state = {
-            result: null
+            result: null,
+            uploaded: false,
         };
 
         this.handleFileUpload = this.handleFileUpload.bind(this);
@@ -42,11 +46,12 @@ export class Tab extends React.Component<{}, UploadFileStateProps> {
                 },
             };
 
+            this.setState({ uploaded: true });
+
             axios
                 .post("http://localhost:5000/upload", formData, config)
                 .then((response: AxiosResponse<any>) => {
-                    if(response.data && response.data.status === "OK") {
-                        console.log(response.data.result);
+                    if (response.data && response.data.status === "OK") {
                         this.setState({ result: response.data.result });
                     }
                 })
@@ -76,7 +81,10 @@ export class Tab extends React.Component<{}, UploadFileStateProps> {
                                             <Typography>
                                                 Upload your <code>messages.json</code> file using
                                                 the button below and your results will be displayed
-                                                in the <code>Results</code> section.
+                                                in the <code>Results</code> section. This process
+                                                can <strong>take a while</strong> because of the
+                                                large amount of data involved (
+                                                <strong>~5 minutes</strong>).
                                             </Typography>
                                         </Box>
                                         <br></br>
@@ -93,6 +101,11 @@ export class Tab extends React.Component<{}, UploadFileStateProps> {
 
                                         <Box mt={1.5}>
                                             <Grid container justify="flex-end" alignItems="center">
+                                                {!this.state.result && this.state.uploaded && (
+                                                    <Box mr={4}>
+                                                        <CircularProgress />
+                                                    </Box>
+                                                )}
                                                 <input
                                                     accept=".json"
                                                     id="file-input"
@@ -102,6 +115,10 @@ export class Tab extends React.Component<{}, UploadFileStateProps> {
                                                 />
                                                 <label htmlFor="file-input">
                                                     <Button
+                                                        disabled={
+                                                            this.state.uploaded &&
+                                                            !this.state.result
+                                                        }
                                                         variant="contained"
                                                         color="primary"
                                                         component="span"
@@ -126,9 +143,26 @@ export class Tab extends React.Component<{}, UploadFileStateProps> {
                     ></path>
                 </svg>
 
-                {this.state.result !== null 
-                ? <Results result={this.state.result}/>
-                : <Box pb={4} className="text-center"><Typography variant="h3">Upload your file to see results...</Typography></Box>}
+                {this.state.result ? (
+                    <Results result={this.state.result} />
+                ) : (
+                    <Box pb={4} className="text-center">
+                        <Typography variant="h3">
+                            {this.state.uploaded ? "Loading..." : "Upload your file to see results here."}
+                        </Typography>
+                        {/* <Box my={2}>
+                            <Container maxWidth="sm">
+                                <Divider></Divider>
+                            </Container>
+                        </Box>
+
+                        <Box my={4}>
+                            <Typography variant="body1">
+                                Upload your file to see the results below.
+                            </Typography>
+                        </Box> */}
+                    </Box>
+                )}
             </React.Fragment>
         );
     }
