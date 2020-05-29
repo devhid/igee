@@ -22,7 +22,6 @@ export function getMonthlyChartData(conversation: Conversation): MonthlyChartDat
 
 export function getMostActiveParticipant(conversation: Conversation): MostActiveParticipant {
     const mostActive = conversation.analysis.mostActiveParticipant;
-    console.log(conversation);
 
     return {
         name: mostActive,
