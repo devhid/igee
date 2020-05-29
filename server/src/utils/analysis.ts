@@ -55,10 +55,10 @@ export function getActivityTimes(messages: Message[]): IndividualAnalysis {
     const its: IndividualTimeStatistics = getIndividualTimeStatistics(messages);
 
     for (const [participant, counts] of Object.entries(its)) {
-        const maxKey = Object.keys(its).reduce((a: string, b: string) => its[a] > its[b] ? a : b);
-
+        const maxKey = Object.keys(counts).reduce((a: string, b: string) => counts[a] > counts[b] ? a : b);
+        
         activityTimes[participant] = {
-            mostActiveDuring: PART_OF_DAY_MAPPING[maxKey],
+            mostActiveDuring: PART_OF_DAY_MAPPING[maxKey]
         };
     }
 

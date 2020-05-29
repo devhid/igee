@@ -20,7 +20,7 @@ export function process(preprocessedConversation: PreprocessedConversation): Upl
         const statistics = getStatistics(messages);
         
         const analysis = {
-            mostActiveParticipant: getMostActiveParticipant(statistics),
+            mostActiveParticipant: getMostActiveParticipant(statistics.individual),
             individual: getActivityTimes(messages),
         };
 
