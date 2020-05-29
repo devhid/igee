@@ -19,7 +19,7 @@ This tool reads and analyzes all Instagram conversations giving information abou
 - :zap: [Node.js](https://nodejs.org)
 - :nut_and_bolt: [Express](https://expressjs.com/)
 - :outbox_tray: [Multer](https://github.com/expressjs/multer)
-- :electron: [React](https://reactjs.org/)
+- :electron:&nbsp; [React](https://reactjs.org/)
 - :art: [Material UI](https://material-ui.com/)
 
 ## Notes
