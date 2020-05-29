@@ -1,20 +1,20 @@
 import React, { Fragment } from "react";
-import { Box, Typography, Card, CardContent, List, Chip, Link } from "@material-ui/core";
+import { Box, Typography, Card, CardContent, List, Chip, Link, Tooltip } from "@material-ui/core";
 
 export const Information = () => {
-    const messageTypes = [
-        "Actions",
-        "GIFs",
-        "Hearts",
-        "Live Video Invites",
-        "Media Posts",
-        "Media Shares",
-        "Profile Shares",
-        "Story Shares",
-        "Regular Texts",
-        "Video Calls",
-        "Voice Messages",
-    ];
+    const MESSAGE_TYPES: { [type: string]: string } = {
+        "Actions": "Group name changes or participant additions.",
+        "GIFs": "Media files in gif format.",
+        "Hearts": "A feature from older versions of Instagram that had a button to send a heart emoji.",
+        "Live Video Invites": "A live video invitation.",
+        "Media Posts": "Pictures or videos from the user's media gallery.",
+        "Media Shares": "A photo or video shared from an Instagram user's profile.",
+        "Profile Shares": "An Instagram profile that is shared.",
+        "Story Shares": "An Instagram story that is shared.",
+        "Regular Texts": "Messages that contain only text.",
+        "Video Calls": "A video call invitation.",
+        "Voice Messages": "A user's voice message."
+    };
 
     return (
         <Fragment>
@@ -43,8 +43,10 @@ export const Information = () => {
                 </Box>
                 <Box className="chip-container">
                     <List>
-                        {messageTypes.map((text, index) => (
-                            <Chip className="chip" label={text} key={text} />
+                        {Object.keys(MESSAGE_TYPES).map((text) => (
+                            <Tooltip key={text} title={MESSAGE_TYPES[text]} placement="top" arrow>
+                                <Chip className="chip" label={text}/>
+                            </Tooltip>
                         ))}
                     </List>
                 </Box>
