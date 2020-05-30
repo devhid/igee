@@ -49,7 +49,7 @@ export class Tab extends React.Component<{}, UploadFileStateProps> {
             this.setState({ uploaded: true });
 
             axios
-                .post("http://54.209.66.106/upload", formData, config)
+                .post("https://mikeygulati.me/upload", formData, config)
                 .then((response: AxiosResponse<any>) => {
                     if (response.data && response.data.status === "OK") {
                         this.setState({ result: response.data.result });
