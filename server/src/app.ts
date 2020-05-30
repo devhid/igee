@@ -1,5 +1,5 @@
 import express, { Application } from "express";
-import { Route } from "./models/Route";
+import { Route } from "./models/route";
 import { Middleware } from "./models/middleware";
 
 type ApplicationInputs = {
