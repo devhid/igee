@@ -21,6 +21,7 @@ This tool reads and analyzes all Instagram conversations giving information abou
 - :outbox_tray: [Multer](https://github.com/expressjs/multer)
 - :electron:&nbsp; [React](https://reactjs.org/)
 - :art: [Material UI](https://material-ui.com/)
+- :chart_with_upwards_trend: [Nivo](https://nivo.rocks/)
 
 ## Notes
 Instagram conversations that are uploaded are only temporarily stored in **memory** until your results are given. **We do not collect and store any of your Instagram data**.
